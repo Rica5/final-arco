@@ -78,12 +78,10 @@ async function fetchData(){
     //     .catch((e)=>console.log("ERR catch sessionExpiored"))
     
     try{
-        await page.goto(link)
+        await page.goto(link,{"waitUntil":["load", "networkidle2"]})
         .then(()=>console.log("[👍] validation page opened"))
         .catch((e)=>console.log('Goto validation Fail page'))
         // Wait for table selector before scraping
-        const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
-        await navigationPromise;
         await page.waitForSelector('.x-grid3-row-table tr',{visible:true,timeout: 0})
             .then(()=>console.log('Selector ok'))
             // error on timeout
