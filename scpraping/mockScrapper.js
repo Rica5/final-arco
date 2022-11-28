@@ -82,6 +82,8 @@ async function fetchData(){
         .then(()=>console.log("[👍] validation page opened"))
         .catch((e)=>console.log('Goto validation Fail page'))
         // Wait for table selector before scraping
+        const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
+        await navigationPromise;
         await page.waitForSelector('.x-grid3-row-table tr',{visible:true,timeout: 10000})
             .then(()=>console.log('Selector ok'))
             // error on timeout
