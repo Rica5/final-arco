@@ -29,8 +29,9 @@ async function sessionExpired(page){
 
 /* LOGIN PAGE FILL */
 async function login(page){                         // login page
+    const navigationPromise = page.waitForNavigation({waitUntil: "domcontentloaded"});
     console.log('[👍] login ready ');
-
+    await navigationPromise;
     //await sleep(4000)
     await page.waitForSelector('#userName')
     await page.type('#userName',userName,{delai:50});
