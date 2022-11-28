@@ -18,7 +18,7 @@ async function createBrowser(){
         ignoreHTTPSErrors: true,
         headless: true,
         devtools: false,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        args: ['--no-sandbox', '--disable-setuid-sandbox','--single-process']
     });
     console.log('[👍] browser .. ');
     return browser
