@@ -27,6 +27,7 @@ async function createBrowser(){
 /* create page from a browser */
 async function createPage(browser){
     const page = await browser.newPage();
+    await page.setDefaultNavigationTimeout(0);
     console.log('[👍] new page created  ..');
     return page
 }
